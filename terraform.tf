@@ -2,6 +2,7 @@ provider "aws" {
   region = "ap-south-1"
 }
 
+# --- S3 Bucket ---
 resource "aws_s3_bucket" "example_bucket" {
   bucket = "my-unique-bucket-name-123456"
   acl    = "private"
@@ -27,4 +28,14 @@ resource "aws_s3_bucket_public_access_block" "block_public" {
   block_public_policy     = true
   ignore_public_acls      = true
   restrict_public_buckets = true
+}
+
+# --- EC2 Instance using default VPC ---
+resource "aws_instance" "my_ec2" {
+  ami           = "ami-0a1235697f4afa8a4"
+  instance_type = "t2.micro"
+
+  tags = {
+    Name = "Terraform-EC2-Simple"
+  }
 }
