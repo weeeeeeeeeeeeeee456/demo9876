@@ -4,7 +4,7 @@ provider "aws" {
 
 # --- S3 Bucket ---
 resource "aws_s3_bucket" "example_bucket" {
-  bucket = "my-unique-bucket-name-123456"
+  bucket = "prithaunique"
   acl    = "private"
 
   tags = {
